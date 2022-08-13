@@ -1,0 +1,41 @@
+/* layout helpers */
+
+.flex {
+    display: flex;
+}
+
+.grid {
+    display: grid;
+}
+
+.relative {
+    position: relative;
+}
+
+/* list helpers */
+
+.clean-list {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+.hide {
+    display: none;
+}
+
+.modal.show {
+    left: 1%;
+}
+
+/* button helper */
+
+.btn {
+    background-color: var(--clr2);
+    color: white;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 2em;
+    padding: 0.5em 2em;
+    font-size: 16px;
+}

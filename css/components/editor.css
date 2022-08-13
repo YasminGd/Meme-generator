@@ -1,0 +1,161 @@
+.editor {
+    display: none;
+    height: calc(100vh - 50px);
+    flex-direction: column;
+}
+
+.canvas-size-determine {
+    width: 90%;
+    margin: 20px 0;
+}
+
+.controls-container {
+    background-color: white;
+    flex-direction: column;
+    padding: 20px 30px;
+    justify-content: space-between;
+    flex-basis: 50%;
+}
+
+.first-row {
+    grid-template-columns: 6fr repeat(5, 1fr);
+    margin-bottom: 15px;
+}
+
+.first-row>*:not(:first-child) {
+    justify-self: end;
+    align-self: center;
+    cursor: pointer;
+}
+
+.first-row>*:not(:first-child):hover {
+    color: var(--clr2);
+}
+
+.second-row {
+    border: none;
+    grid-template-rows: 0.4fr 0.6fr;
+}
+
+.upper-part {
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    padding: 0;
+    border-bottom: 1px solid #EBEBEB;
+    background-color: white;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    gap: 0;
+}
+
+#font-input {
+    border-radius: 2px;
+    border: 1px solid #EBEBEB;
+    background-color: white;
+    color: #989898;
+    font-family: roboto;
+    padding: 9px;
+}
+
+#txt-color-input,
+#stroke-color-input {
+    position: absolute;
+    height: 10px;
+    width: 20px;
+    opacity: 0;
+    right: 50;
+}
+
+#txt-color-input:hover,
+#stroke-color-input:hover {
+    cursor: pointer;
+}
+
+.text-options {
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+}
+
+#line-input {
+    border: none;
+    width: 100%;
+    padding: 21px 15px;
+}
+
+.stickers {
+    padding: 20px 0;
+    width: 100%;
+    border: 1px solid #EBEBEB;
+    grid-template-columns: repeat(5, 1fr);
+    justify-items: center;
+    align-content: center;
+    row-gap: 10px;
+    font-size: 50px;
+    margin-bottom: 15px;
+}
+
+.share {
+    justify-content: center;
+    text-decoration: none;
+    color: inherit;
+}
+
+.buttons {
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0 0 0;
+    gap: 10px;
+}
+
+.download {
+    align-self: end;
+}
+
+.download:hover {
+    color: white;
+}
+
+.canvas-container {
+    background-color: var(--clr1);
+    justify-content: center;
+    align-items: center;
+    flex-basis: 50%;
+}
+
+.back-to-gallery {
+    border-style: none;
+    background: transparent;
+    position: absolute;
+    left: 26px;
+    top: 24px;
+    font-family: roboto;
+    color: #989898;
+    font-size: 14px;
+}
+
+.back-to-gallery::before {
+    content: 'ᐸ';
+    padding: 10px;
+}
+
+.back-to-gallery:hover {
+    color: var(--clr2);
+    background-color: transparent;
+}
+
+canvas {
+    border-radius: 0;
+    margin-top: 0;
+}
+
+.modal {
+    background-color: var(--clr2);
+    color: white;
+    border-radius: 35px;
+    padding: 17px 36px;
+    position: fixed;
+    bottom: 1%;
+    left: -100%;
+    transition: .6s;
+}

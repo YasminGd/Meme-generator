@@ -1,0 +1,141 @@
+/* mobile only */
+
+@media (max-width: 890px) {
+
+    .back-to-gallery {
+        display: none;
+    }
+
+    nav ul {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: var(--clr2);
+        z-index: 10;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        justify-content: center;
+        align-items: center;
+        gap: 0;
+    }
+
+    nav ul li {
+        color: white;
+        padding: 50px;
+    }
+
+    nav ul li:hover {
+        color: white;
+        font-weight: 900
+    }
+
+    nav ul li:not(li:last-of-type) {
+        border-bottom: 1px solid white;
+    }
+
+    h2 {
+        font-size: 18px;
+    }
+
+    .upper-part {
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+    }
+
+    .text-options {
+        grid-column: span 3;
+    }
+
+    #font-input {
+        grid-column: span 3;
+    }
+}
+
+/* SMAll */
+
+
+@media (min-width: 640px) {}
+
+/* MEDIUM */
+
+@media (min-width: 890px) {
+    .editor {
+        flex-direction: row;
+    }
+
+    .upper-part {
+        padding: 10px 10px;
+        gap: 10px;
+    }
+
+    nav ul.hide {
+        flex-direction: row;
+        display: flex;
+    }
+
+    .nav-btn {
+        display: none;
+    }
+
+    .keywords {
+        justify-content: end;
+    }
+
+    .buttons {
+        flex-direction: row;
+    }
+
+    .canvas-container {
+        flex-basis: 60%;
+        background-color: white;
+
+    }
+
+    .controls-container {
+        flex-basis: 40%;
+        background-color: var(--clr4);
+        padding: 40px 30px;
+    }
+
+    .filter {
+        grid-template-columns: 3fr 7fr;
+    }
+
+    .second-row {
+        border: 1px solid #EBEBEB;
+        border-radius: 10px;
+    }
+
+    canvas {
+        border-radius: 10px;
+        margin-top: 60px;
+    }
+
+    #font-input {
+        padding: 0;
+    }
+
+    #line-input {
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+    }
+
+    .controls {
+        gap: 10px;
+    }
+}
+
+/* LARGE */
+
+@media (min-width: 1280px) {
+    .text-options {
+        padding: 0;
+    }
+
+    #font-input {
+        padding: 0;
+    }
+}

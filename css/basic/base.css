@@ -1,0 +1,65 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-family: roboto;
+    color: var(--clr5);
+    font-size: 18px;
+}
+
+img:hover {
+    cursor: pointer;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+a {
+    cursor: pointer;
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--clr2);
+}
+
+a:link {
+    color: inherit;
+}
+
+svg {
+    min-width: 20px
+}
+
+svg:hover {
+    cursor: pointer;
+}
+
+svg:hover path {
+    fill: var(--clr2);
+}
+
+::selection {
+    background-color: hsl(32, 100%, 80%);
+}
+
+button:hover {
+    background-color: hsl(25, 100%, 57%);
+}
+
+li:hover {
+    cursor: pointer;
+    color: var(--clr2);
+}
+
+h2 {
+    margin-top: 0;
+    margin-bottom: 0;
+}

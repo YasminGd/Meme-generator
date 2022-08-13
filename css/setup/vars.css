@@ -1,0 +1,12 @@
+:root {
+    /* gallery bgc*/
+    --clr1: #E5E5E5;
+    /* main color */
+    --clr2: #FF9826;
+    /*shadows*/
+    --clr3: #DBDBDB;
+    /* controls bgc */
+    --clr4: #F8F8F8;
+    /* text */
+    --clr5: #727272;
+}

@@ -1,0 +1,24 @@
+.gallery {
+    padding: 10px 30px;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    column-gap: 15px;
+    row-gap: 10px;
+    background-color: var(--clr1);
+    grid-auto-rows: minmax(200px, 1fr);
+}
+
+.meme {
+    position: relative;
+    border-radius: 10px;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    transition: bottom 0.4s;
+    left: 0;
+    bottom: 0;
+}
+
+.meme:hover {
+    bottom: 10px;
+    border: var(--clr2) 2px solid;
+}

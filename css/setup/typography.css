@@ -1,0 +1,19 @@
+@font-face {
+    font-family: impact;
+    src: url('../../fonts/impact/impact.ttf');
+}
+
+@font-face {
+    font-family: roboto;
+    src: url('../../fonts/Roboto/Roboto-Regular.ttf');
+}
+
+@font-face {
+    font-family: roboto-light;
+    src: url('../../fonts/Roboto/Roboto-Light.ttf');
+}
+
+@font-face {
+    font-family: tillana;
+    src: url('../../fonts/tillana/Tillana-Regular.ttf');
+}
