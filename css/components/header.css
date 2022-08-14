@@ -19,7 +19,7 @@ nav ul li {
     font-weight: 500;
 }
 
-.nav-btn {
+/* .nav-btn {
     border: none;
     font-size: 20px;
     z-index: 20;
@@ -28,4 +28,13 @@ nav ul li {
 
 .nav-btn:hover {
     background-color: transparent;
+} */
+
+label {
+    position: relative;
+    z-index: 100;
+}
+
+#nav {
+    display: none;
 }

@@ -1,6 +1,6 @@
 'use strict'
 
-function renderSavedMemes(isFromNav = false) {
+function renderSavedMemes() {
     const memes = getSavedMemes()
 
     const memesHTML = memes.map(meme =>
@@ -16,10 +16,10 @@ function renderSavedMemes(isFromNav = false) {
     elFilter.style.display = 'none'
     elEditor.style.display = 'none'
 
-    elGallery.innerHTML = memesHTML.length ? memesHTML.join('') : '<h2 style="grid-column: span 2; font-size:30px">No saved memes for now<h2/>'
+    elGallery.innerHTML = memesHTML.length ? memesHTML.join('') : '<h2 class="no-saved-memes-h2">No saved memes for now</h2>'
     elGallery.style.display = 'grid'
 
-    if (isFromNav) toggleNav()
+    if (document.querySelector('#nav').checked) document.querySelector('#nav').checked = false
 }
 
 function onSavedMemeSelect(savedId) {
@@ -37,7 +37,6 @@ function showModal(txt) {
     const elModal = document.querySelector('.modal')
     elModal.innerText = txt
     elModal.classList.add('show')
-    console.log(elModal);
 
     setTimeout(() => elModal.classList.remove('show'), 1500)
 }

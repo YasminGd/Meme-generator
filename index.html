@@ -29,19 +29,17 @@
     <header class="flex full">
         <img class="logo" src="img/LOGO.png" alt="logo" onclick="renderGallery()">
         <nav>
-
-            <ul class="flex clean-list hide">
-                <li onclick="renderSavedMemes(true)">
+            <input type="checkbox" id="nav" />
+            <label for="nav"> </label>
+            <ul class="flex clean-list">
+                <li onclick="renderSavedMemes()">
                     Memes
                 </li>
-                <li onclick="renderGallery(true)">
+                <li onclick="renderGallery()">
                     Gallery
                 </li>
             </ul>
         </nav>
-        <button class="nav-btn" onclick="toggleNav()">
-            ☰
-        </button>
     </header>
     <main>
         <section class="gallery-constainer">

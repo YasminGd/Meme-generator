@@ -28,7 +28,7 @@ function onDown(ev) {
 
 function onMove(ev) {
     const meme = getMeme()
-    if (meme.clickedLine === null) return
+    if (!meme.clickedLine) return
     const pos = getEvPos(ev)
     if (gTouchEvs.includes(ev.type)) {
         ev.preventDefault()

@@ -1,6 +1,6 @@
 'use strict'
 
-function renderGallery(isFromNav = false) {
+function renderGallery() {
     const memes = getMemes()
     const memesHTML = memes.map(meme =>
         `
@@ -19,7 +19,7 @@ function renderGallery(isFromNav = false) {
     elGallery.style.display = 'grid'
     elFilter.style.display = 'grid'
 
-    if (isFromNav) toggleNav()
+    if (document.querySelector('#nav').checked) document.querySelector('#nav').checked = false
 }
 
 function onImgSelect(id) {

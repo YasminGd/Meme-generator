@@ -22,3 +22,9 @@
     bottom: 10px;
     border: var(--clr2) 2px solid;
 }
+
+.no-saved-memes-h2 {
+    grid-column: span 2; 
+    font-size:30px; 
+    padding: 30px
+}

@@ -225,7 +225,7 @@ function saveMeme() {
     function getImgForSave(img) {
         meme.memeImg = img
 
-        if (gMeme.savedId === null) {
+        if (!gMeme.savedId) {
             meme.savedId = makeId()
             gSavedMemes.push(meme)
         } else {
