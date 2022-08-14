@@ -97,25 +97,40 @@ function setSavedMeme(savedId) {
     gMeme = meme
 }
 
+function getCurrLine() {
+    return gMeme.lines[gMeme.selectedLineIdx]
+}
+
 function changeLineTxt(txt) {
-    gMeme.lines[gMeme.selectedLineIdx].txt = txt
+    getCurrLine().txt = txt
 }
 
 function addToLine(txt) {
-    if (txt === 'Backspace') gMeme.lines[gMeme.selectedLineIdx].txt = gMeme.lines[gMeme.selectedLineIdx].txt.slice(0, -1)
-    else gMeme.lines[gMeme.selectedLineIdx].txt += txt
+    const line = getCurrLine()
+
+    if (line.txt === 'Change Text') {
+        if (txt === 'Backspace') {
+            line.txt = ''
+        } else {
+            changeLineTxt(txt)
+        }
+    } else if (txt === 'Backspace') {
+        line.txt = line.txt.slice(0, -1)
+    } else {
+        line.txt += txt
+    }
 }
 
 function setFillColor(color) {
-    gMeme.lines[gMeme.selectedLineIdx].color.fill = color
+    getCurrLine().color.fill = color
 }
 
 function setStrokeColor(color) {
-    gMeme.lines[gMeme.selectedLineIdx].color.stroke = color
+    getCurrLine().color.stroke = color
 }
 
 function setLineSize(value) {
-    gMeme.lines[gMeme.selectedLineIdx].size += value
+    getCurrLine().size += value
 }
 
 function setCurrLine() {
@@ -123,7 +138,7 @@ function setCurrLine() {
 }
 
 function decideLineSize(canvas) {
-    const size = canvas.width / 20
+    const size = canvas.width / 15
     gMeme.lines.forEach(line => line.size = size)
 }
 
@@ -137,7 +152,7 @@ function relocateLines(canvas) {
 function alignTxt(pos) {
     const canvas = getCanvas()
 
-    const currLine = gMeme.lines[gMeme.selectedLineIdx]
+    const currLine = getCurrLine()
     currLine.position = pos
 
     switch (pos) {
@@ -158,12 +173,12 @@ function removeActiveLine() {
 }
 
 function changeHeight(value) {
+    const line = getCurrLine()
     const canvas = getCanvas()
-    const { y, size } = gMeme.lines[gMeme.selectedLineIdx]
+    const { y, size } = line
     if (y + value + size / 2 > canvas.height || y + value - size / 2 < 0) return
 
-
-    gMeme.lines[gMeme.selectedLineIdx].y += value
+    line.y += value
 }
 
 function addLine(sticker) {
@@ -171,7 +186,7 @@ function addLine(sticker) {
 
     const line = {
         txt: sticker ? sticker : 'Change Text',
-        size: sticker ? canvas.width / 7 : canvas.width / 20,
+        size: sticker ? canvas.width / 7 : canvas.width / 15,
         color: {
             fill: 'white',
             stroke: 'black'
@@ -203,14 +218,20 @@ function getSavedMemes() {
 }
 
 function saveMeme() {
-    if (gMeme.savedId === null) {
-        const meme = JSON.parse(JSON.stringify(gMeme))
-        meme.savedId = makeId()
-        gSavedMemes.push(meme)
-    }
-    else {
-        const idx = gSavedMemes.findIndex(meme => meme.savedId === gMeme.savedId)
-        gSavedMemes[idx] = JSON.parse(JSON.stringify(gMeme))
+    const meme = JSON.parse(JSON.stringify(gMeme))
+    removeActiveLine()
+    renderMeme(getImgForSave)
+
+    function getImgForSave(img) {
+        meme.memeImg = img
+
+        if (gMeme.savedId === null) {
+            meme.savedId = makeId()
+            gSavedMemes.push(meme)
+        } else {
+            const idx = gSavedMemes.findIndex(meme => meme.savedId === gMeme.savedId)
+            gSavedMemes[idx] = meme
+        }
     }
     saveToStorage(KEY, gSavedMemes)
 }
@@ -224,6 +245,7 @@ function deleteMeme() {
 function lineIsClicked(pos) {
     for (let i = 0; i < gMeme.lines.length; i++) {
         const line = gMeme.lines[i]
+        changeGCtxFont(line)
         const txtWidth = gCtx.measureText(line.txt).width
         const rectY = line.y - line.size / 2
         const rectX = calcRectX(line, txtWidth)
@@ -254,7 +276,7 @@ function setFilter(filter) {
 }
 
 function setFont(font) {
-    gMeme.lines[gMeme.selectedLineIdx].font = font
+    getCurrLine().font = font
 }
 
 function getId() {
@@ -268,4 +290,5 @@ function addToKeywordsCount(filter) {
 function resetFilter() {
     gFilter = ''
 }
+
 

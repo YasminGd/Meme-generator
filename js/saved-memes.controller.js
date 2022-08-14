@@ -5,7 +5,7 @@ function renderSavedMemes(isFromNav = false) {
 
     const memesHTML = memes.map(meme =>
         `
-        <img src="img/${meme.selectedImgId}.jpg" class="meme" onclick="onSavedMemeSelect('${meme.savedId}')" />
+        <img src="${meme.memeImg}" class="meme" onclick="onSavedMemeSelect('${meme.savedId}')" />
         `
     )
 

@@ -18,9 +18,9 @@ function doUploadImg(imgDataUrl, onSuccess) {
     formData.append('img', imgDataUrl)
 
     fetch('//ca-upload.com/here/upload.php', {
-            method: 'POST',
-            body: formData
-        })
+        method: 'POST',
+        body: formData
+    })
         .then(res => res.text())
         .then((url) => {
             console.log('Got back live url:', url);

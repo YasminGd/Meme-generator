@@ -36,7 +36,7 @@ function getCanvas() {
     return gElCanvas
 }
 
-function renderMeme() {
+function renderMeme(func = null) {
     const meme = getMeme()
     const lines = meme.lines
 
@@ -44,7 +44,7 @@ function renderMeme() {
     img.src = `img/${meme.selectedImgId}.jpg`
     img.onload = () => {
         gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
-        drawText(lines)
+        drawText(lines, func)
     }
 }
 
@@ -64,8 +64,7 @@ function renderFilterKeywords() {
     elKeywords.innerHTML = keywordsHTML.join('')
 }
 
-function drawText(lines) {
-
+function drawText(lines, func = null) {
     lines.forEach((line, idx) => {
         gCtx.beginPath()
         gCtx.textBaseline = 'middle'
@@ -88,7 +87,7 @@ function drawText(lines) {
             drawRect(rectTopX, rectTopY, txtWidth, line.size)
         }
     })
-
+    if (func) func(gElCanvas.toDataURL("image/jpeg"))
 }
 
 function drawRect(x, y, xRigth, yDown) {
@@ -108,8 +107,9 @@ function onAddToLineTxt(txt) {
 }
 
 //Input from the input box
-function onChangeLineTxt(txt) {
-    changeLineTxt(txt)
+function onChangeLineTxt(inputTxt) {
+    if (inputTxt.placeholder === 'Change Text') inputTxt.placeholder = ''
+    changeLineTxt(inputTxt.value)
     renderMeme()
 }
 
@@ -158,11 +158,17 @@ function resizeCanvas() {
     gElCanvas.height = (gElCanvas.width * imgHeight) / imgWidth
 }
 
-function onDownloadMeme(elLink) {
-    const data = gElCanvas.toDataURL()
+function onDownloadMeme() {
+    const elLink = document.querySelector('.download')
 
-    elLink.href = data
-    elLink.download = 'my-meme'
+    removeActiveLine()
+    renderMeme(downloadLink)
+
+    function downloadLink(img) {
+        elLink.href = img
+        elLink.download = 'my-meme'
+        elLink.click()
+    }
 }
 
 function onAddLine(sticker = null) {
@@ -183,6 +189,9 @@ function onSetFont(font) {
 }
 
 function onShare() {
-    uploadImg(gElCanvas)
+    uploadImg()
 }
 
+function changeGCtxFont(line) {
+    gCtx.font = `${line.size}px ${line.font}`
+}

@@ -70,10 +70,17 @@ function changeElTxt() {
     const elTxt = document.querySelector('#line-input')
     const elFont = document.querySelector('#font-input')
 
-    const meme = getMeme()
+    const currLine = getCurrLine()
 
-    elTxt.value = meme.lines[meme.selectedLineIdx] ? meme.lines[meme.selectedLineIdx].txt : ''
-    elFont.value = meme.lines[meme.selectedLineIdx] ? meme.lines[meme.selectedLineIdx].font : ''
+    if (currLine) {
+        elTxt.placeholder = currLine.txt === 'Change Text' ? 'Change Text' : ''
+        elTxt.value = currLine.txt === 'Change Text' ? '' : currLine.txt
+        elFont.value = currLine.font
+    } else {
+        elTxt.placeholder = ''
+        elTxt.value = ''
+        elFont.value = ''
+    }
 }
 
 function onSetFilter(filter, isClicked = false) {
